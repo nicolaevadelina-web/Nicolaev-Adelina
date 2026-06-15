@@ -11,9 +11,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:wght@300;400;500&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
 
   <style>
-    /* ══ Torturi page — extra styles ══ */
-
-    /* Page hero */
     .page-hero {
       padding: 140px 5% 60px;
       text-align: center;
@@ -32,7 +29,6 @@
       pointer-events: none;
     }
 
-    /* Order hero banner */
     .order-hero {
       background: linear-gradient(135deg, var(--chocolate), var(--deep-rose));
       border-radius: 24px;
@@ -64,10 +60,7 @@
       margin: 0 auto 2rem;
     }
 
-    /* Steps */
-    .torturi-steps {
-      padding: 3rem 5% 1rem;
-    }
+    .torturi-steps { padding: 3rem 5% 1rem; }
     .process-steps {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -105,7 +98,6 @@
     }
     .step-card p { font-size: 0.875rem; color: var(--text-mid); line-height: 1.6; }
 
-    /* Order form */
     .torturi-form-section { padding: 1rem 5% 5rem; }
 
     .order-form-container {
@@ -164,7 +156,6 @@
     }
     .form-group textarea { resize: vertical; min-height: 100px; }
 
-    /* Flavor chips */
     .flavor-hint { font-size: 0.8rem; color: var(--text-mid); margin-bottom: 0.75rem; font-style: italic; }
     .flavor-grid {
       display: grid;
@@ -184,6 +175,8 @@
       color: var(--text-mid);
       font-family: 'Lato', sans-serif;
       user-select: none;
+      position: relative;
+      display: block;
     }
     .flavor-chip:hover {
       border-color: var(--rose);
@@ -199,15 +192,20 @@
       box-shadow: 0 4px 12px rgba(155,58,82,0.2);
     }
     .flavor-chip .fc-emoji { font-size: 1.6rem; display: block; margin-bottom: 5px; }
+    .flavor-chip input[type="checkbox"] {
+      position: absolute;
+      opacity: 0;
+      width: 0; height: 0;
+      pointer-events: none;
+    }
 
-    /* Submit */
     .form-submit {
       width: 100%; padding: 15px; font-size: 1rem;
       border: none; cursor: pointer;
       font-family: 'Lato', sans-serif; margin-top: 0.25rem;
     }
+    .form-submit[disabled] { opacity: 0.6; cursor: not-allowed; }
 
-    /* Success */
     .success-msg {
       display: none;
       background: #EAF8F0;
@@ -220,54 +218,26 @@
     }
     .success-msg.show { display: block; }
 
-    /* ── Gallery-preview strip on torturi page ── */
-    .torturi-gallery-strip {
-      background: var(--cream);
-      padding: 3.5rem 5% 0;
+    .error-msg {
+      display: none;
+      background: #FDEDED;
+      border: 1px solid #E89595;
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      color: #A33;
+      font-size: 0.9rem;
+      margin-top: 1rem;
     }
-    .torturi-gallery-strip .section-header { margin-bottom: 2rem; }
-    .strip-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-      max-width: 900px;
-      margin: 0 auto 3rem;
-    }
-    .strip-item {
-      border-radius: 16px;
-      overflow: hidden;
-      height: 180px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 4rem;
-      position: relative;
-      cursor: default;
-      transition: transform 0.3s;
-    }
-    .strip-item:hover { transform: scale(1.03); }
-    .strip-item .strip-label {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      background: rgba(61,26,26,0.55);
-      color: var(--white);
-      font-family: 'Playfair Display', serif;
-      font-size: 0.85rem;
-      padding: 0.5rem 0.75rem;
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-    .strip-item:hover .strip-label { opacity: 1; }
+    .error-msg.show { display: block; }
 
-    /* Responsive */
     @media (max-width: 640px) {
       .form-row { grid-template-columns: 1fr; }
       .order-form-container { padding: 1.75rem 1.25rem; }
       .flavor-grid { grid-template-columns: repeat(2, 1fr); }
       .process-steps { grid-template-columns: 1fr 1fr; }
-      .strip-grid { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 380px) {
       .process-steps { grid-template-columns: 1fr; }
-      .strip-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -333,54 +303,53 @@
       </div>
     </section>
 
-
     <!-- ══ FORMULAR COMANDĂ ══ -->
     <section class="torturi-form-section">
       <div class="order-form-container reveal" id="formComanda">
         <h3>Formularul de Comandă</h3>
         <p class="form-subtitle">Completați câmpurile de mai jos și vă vom contacta în maxim 24 ore</p>
 
-        <form action="https://api.sheetmonkey.io/form/iP1fD4zuZiKx7hQ38NaVTf" method="POST" id="torteForm" onsubmit="submitOrder(event)">
+        <form action="https://api.sheetmonkey.io/form/iP1fD4zuZiKx7hQ38NaVTf" method="post" id="torteForm" onsubmit="submitOrder(event)">
 
           <div class="form-row">
             <div class="form-group">
               <label for="nume">Nume complet *</label>
-              <input type="text" id="nume" placeholder="ex: Maria Ionescu" required />
+              <input type="text" id="nume" name="Nume complet" placeholder="ex: Maria Ionescu" required />
             </div>
             <div class="form-group">
               <label for="telefon">Telefon *</label>
-              <input type="tel" id="telefon" placeholder="+373 XX XXX XXX" required />
+              <input type="tel" id="telefon" name="Telefon" placeholder="+373 XX XXX XXX" required />
             </div>
           </div>
 
           <div class="form-row">
             <div class="form-group">
               <label for="data">Data evenimentului *</label>
-              <input type="date" id="data" required />
+              <input type="date" id="data" name="Data evenimentului" required />
             </div>
             <div class="form-group">
               <label for="portii">Număr de porții *</label>
-              <select id="portii" required>
+              <select id="portii" name="Numar portii" required>
                 <option value="">Alege...</option>
-                <option value="6-8">6–8 porții (mic)</option>
-                <option value="10-12">10–12 porții (mediu)</option>
-                <option value="15-20">15–20 porții (mare)</option>
-                <option value="25-30">25–30 porții (very large)</option>
-                <option value="30+">30+ porții (wedding cake)</option>
+                <option value="6-8 portii (mic)">6–8 porții (mic)</option>
+                <option value="10-12 portii (mediu)">10–12 porții (mediu)</option>
+                <option value="15-20 portii (mare)">15–20 porții (mare)</option>
+                <option value="25-30 portii (very large)">25–30 porții (very large)</option>
+                <option value="30+ portii (wedding cake)">30+ porții (wedding cake)</option>
               </select>
             </div>
           </div>
 
           <div class="form-group">
             <label for="eveniment">Tipul evenimentului</label>
-            <select id="eveniment">
+            <select id="eveniment" name="Tip eveniment">
               <option value="">Alege tipul...</option>
-              <option value="nastere">🎂 Zi de naștere</option>
-              <option value="nunta">💍 Nuntă</option>
-              <option value="botez">🎊 Botez</option>
-              <option value="absolvire">🎓 Absolvire</option>
-              <option value="aniversare">💑 Aniversare</option>
-              <option value="altul">🎉 Alt eveniment</option>
+              <option value="Zi de nastere">🎂 Zi de naștere</option>
+              <option value="Nunta">💍 Nuntă</option>
+              <option value="Botez">🎊 Botez</option>
+              <option value="Absolvire">🎓 Absolvire</option>
+              <option value="Aniversare">💑 Aniversare</option>
+              <option value="Alt eveniment">🎉 Alt eveniment</option>
             </select>
           </div>
 
@@ -390,51 +359,62 @@
             <p class="flavor-hint">Poți alege mai multe</p>
           </div>
           <div class="flavor-grid" id="flavorGrid">
-            <div class="flavor-chip" onclick="toggleFlavor(this)" data-flavor="ciocolata">
+            <label class="flavor-chip" onclick="this.classList.toggle('selected')">
+              <input type="checkbox" name="Arome" value="Ciocolata">
               <span class="fc-emoji">🍫</span>Ciocolată
-            </div>
-            <div class="flavor-chip" onclick="toggleFlavor(this)" data-flavor="capsuni">
+            </label>
+            <label class="flavor-chip" onclick="this.classList.toggle('selected')">
+              <input type="checkbox" name="Arome" value="Capsuni">
               <span class="fc-emoji">🍓</span>Căpșuni
-            </div>
-            <div class="flavor-chip" onclick="toggleFlavor(this)" data-flavor="lamaie">
+            </label>
+            <label class="flavor-chip" onclick="this.classList.toggle('selected')">
+              <input type="checkbox" name="Arome" value="Lamaie">
               <span class="fc-emoji">🍋</span>Lămâie
-            </div>
-            <div class="flavor-chip" onclick="toggleFlavor(this)" data-flavor="cafea">
+            </label>
+            <label class="flavor-chip" onclick="this.classList.toggle('selected')">
+              <input type="checkbox" name="Arome" value="Cafea">
               <span class="fc-emoji">☕</span>Cafea
-            </div>
-            <div class="flavor-chip" onclick="toggleFlavor(this)" data-flavor="afine">
+            </label>
+            <label class="flavor-chip" onclick="this.classList.toggle('selected')">
+              <input type="checkbox" name="Arome" value="Afine">
               <span class="fc-emoji">🫐</span>Afine
-            </div>
-            <div class="flavor-chip" onclick="toggleFlavor(this)" data-flavor="piersici">
+            </label>
+            <label class="flavor-chip" onclick="this.classList.toggle('selected')">
+              <input type="checkbox" name="Arome" value="Piersici">
               <span class="fc-emoji">🍑</span>Piersici
-            </div>
-            <div class="flavor-chip" onclick="toggleFlavor(this)" data-flavor="vanilie">
+            </label>
+            <label class="flavor-chip" onclick="this.classList.toggle('selected')">
+              <input type="checkbox" name="Arome" value="Vanilie">
               <span class="fc-emoji">🌸</span>Vanilie
-            </div>
-            <div class="flavor-chip" onclick="toggleFlavor(this)" data-flavor="nougat">
+            </label>
+            <label class="flavor-chip" onclick="this.classList.toggle('selected')">
+              <input type="checkbox" name="Arome" value="Nougat">
               <span class="fc-emoji">🥜</span>Nougat
-            </div>
+            </label>
           </div>
 
           <div class="form-group">
             <label for="tema">Culori și tema dorită</label>
-            <input type="text" id="tema" placeholder="ex: roz și auriu, temă cu flori, personaj unicorn..." />
+            <input type="text" id="tema" name="Tema si culori" placeholder="ex: roz și auriu, temă cu flori, personaj unicorn..." />
           </div>
 
           <div class="form-group">
             <label for="inscriptie">Inscripție pe tort</label>
-            <input type="text" id="inscriptie" placeholder='ex: "La mulți ani, Elena! 🌸"' />
+            <input type="text" id="inscriptie" name="Inscriptie" placeholder='ex: "La mulți ani, Elena! 🌸"' />
           </div>
 
           <div class="form-group">
             <label for="detalii">Detalii suplimentare</label>
-            <textarea id="detalii" placeholder="Orice alte dorințe, alergii alimentare sau cerințe speciale..."></textarea>
+            <textarea id="detalii" name="Detalii suplimentare" placeholder="Orice alte dorințe, alergii alimentare sau cerințe speciale..."></textarea>
           </div>
 
-          <button type="submit" class="btn-primary form-submit">✨ Trimite Comanda</button>
+          <button type="submit" class="btn-primary form-submit" id="submitBtn">✨ Trimite Comanda</button>
 
           <div class="success-msg" id="successMsg">
             🎉 Comanda a fost trimisă cu succes! Vă vom contacta în maxim 24 ore la numărul indicat. Mulțumim!
+          </div>
+          <div class="error-msg" id="errorMsg">
+            ⚠️ A apărut o eroare la trimitere. Vă rugăm încercați din nou sau contactați-ne telefonic.
           </div>
         </form>
       </div>
@@ -458,17 +438,46 @@
 
   <script src="../js/script.js"></script>
   <script>
-    function toggleFlavor(el) {
-      el.classList.toggle('selected');
-    }
-
+    /* ── Trimitere formular către SheetMonkey (apare în Excel) ── */
     function submitOrder(e) {
       e.preventDefault();
-      const msg = document.getElementById('successMsg');
-      msg.classList.add('show');
-      e.target.reset();
-      document.querySelectorAll('.flavor-chip').forEach(c => c.classList.remove('selected'));
-      msg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+      const form = e.target;
+      const btn = document.getElementById('submitBtn');
+      const successMsg = document.getElementById('successMsg');
+      const errorMsg = document.getElementById('errorMsg');
+
+      successMsg.classList.remove('show');
+      errorMsg.classList.remove('show');
+      btn.disabled = true;
+      btn.textContent = 'Se trimite...';
+
+      const formData = new FormData(form);
+
+      fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      })
+      .then(response => {
+        if (response.ok) {
+          successMsg.classList.add('show');
+          form.reset();
+          document.querySelectorAll('.flavor-chip').forEach(c => c.classList.remove('selected'));
+          successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+          errorMsg.classList.add('show');
+          errorMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      })
+      .catch(() => {
+        errorMsg.classList.add('show');
+        errorMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      })
+      .finally(() => {
+        btn.disabled = false;
+        btn.textContent = '✨ Trimite Comanda';
+      });
     }
   </script>
 
