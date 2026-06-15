@@ -11,8 +11,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:wght@300;400;500&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
 
   <style>
-    /* ── Stiluri suplimentare Contact ── */
-
     .contact-wrapper {
       max-width: 1100px;
       margin: 0 auto;
@@ -23,21 +21,19 @@
       align-items: start;
     }
 
-    /* ── Coloana stânga: info + hartă ── */
+    /* ── Coloana stânga ── */
     .contact-left h3 {
       font-family: 'Playfair Display', serif;
       font-size: 1.9rem;
       color: var(--chocolate);
       margin-bottom: 1.75rem;
     }
-
     .info-block {
       display: flex;
       gap: 1rem;
       align-items: flex-start;
       margin-bottom: 1.4rem;
     }
-
     .info-icon {
       width: 44px; height: 44px;
       border-radius: 12px;
@@ -48,7 +44,6 @@
       transition: background 0.25s;
     }
     .info-block:hover .info-icon { background: var(--rose); }
-
     .info-block h4 {
       font-size: 0.75rem;
       font-weight: 700;
@@ -57,24 +52,11 @@
       color: var(--rose);
       margin-bottom: 0.2rem;
     }
-    .info-block p {
-      font-size: 0.95rem;
-      color: var(--text-dark);
-      line-height: 1.6;
-    }
-    .info-block a {
-      color: var(--deep-rose);
-      text-decoration: none;
-      transition: opacity 0.2s;
-    }
+    .info-block p { font-size: 0.95rem; color: var(--text-dark); line-height: 1.6; }
+    .info-block a { color: var(--deep-rose); text-decoration: none; transition: opacity 0.2s; }
     .info-block a:hover { opacity: 0.7; }
 
-    /* Rețele sociale */
-    .social-row {
-      display: flex;
-      gap: 0.75rem;
-      margin: 1.5rem 0 2rem;
-    }
+    .social-row { display: flex; gap: 0.75rem; margin: 1.5rem 0 2rem; }
     .social-btn {
       width: 44px; height: 44px;
       border-radius: 50%;
@@ -90,22 +72,15 @@
       transform: translateY(-3px);
     }
 
-    /* Harta Google Maps */
+    /* ── Hartă ── */
     .map-container {
       border-radius: 18px;
       overflow: hidden;
       box-shadow: 0 4px 24px var(--shadow);
       border: 1px solid var(--light-gold);
-      height: 280px;
+      height: 260px;
     }
-
-    .map-container iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-      display: block;
-    }
-
+    .map-container iframe { width: 100%; height: 100%; border: none; display: block; }
     .map-label {
       font-size: 0.78rem;
       color: var(--text-mid);
@@ -121,7 +96,6 @@
       padding: 2.5rem;
       box-shadow: 0 6px 40px var(--shadow);
     }
-
     .contact-form-box h3 {
       font-family: 'Playfair Display', serif;
       font-size: 1.55rem;
@@ -129,12 +103,76 @@
       margin-bottom: 1.5rem;
     }
 
-    /* Responsive */
+    /* ── Form fields ── */
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin-bottom: 1.25rem;
+    }
+    .form-group label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--deep-rose);
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 12px 15px;
+      border: 1.5px solid var(--blush);
+      border-radius: 10px;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.95rem;
+      color: var(--text-dark);
+      background: var(--cream);
+      outline: none;
+      transition: border-color 0.25s, box-shadow 0.25s;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--rose);
+      box-shadow: 0 0 0 3px rgba(212,117,138,0.15);
+    }
+    .form-group textarea { resize: vertical; min-height: 130px; }
+
+    .form-submit {
+      width: 100%; padding: 15px; font-size: 1rem;
+      border: none; cursor: pointer;
+      font-family: 'Lato', sans-serif;
+    }
+    .form-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    /* ── Mesaje feedback ── */
+    .success-msg {
+      display: none;
+      background: #EAF8F0;
+      border: 1px solid #6CD99A;
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      color: #1A6840;
+      font-size: 0.9rem;
+      margin-top: 1rem;
+    }
+    .success-msg.show { display: block; }
+
+    .error-msg {
+      display: none;
+      background: #FDEDED;
+      border: 1px solid #E89595;
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      color: #A33;
+      font-size: 0.9rem;
+      margin-top: 1rem;
+    }
+    .error-msg.show { display: block; }
+
+    /* ── Responsive ── */
     @media (max-width: 860px) {
-      .contact-wrapper {
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
-      }
+      .contact-wrapper { grid-template-columns: 1fr; gap: 2.5rem; }
     }
   </style>
 </head>
@@ -156,16 +194,16 @@
 
   <main>
 
-    <!-- ANTET -->
+    <!-- ══ ANTET ══ -->
     <section class="page-hero">
       <span class="section-tag">Suntem aproape</span>
       <h1 class="section-title">Hai să vorbim <em>dulce</em></h1>
     </section>
 
-    <!-- GRID CONTACT -->
+    <!-- ══ GRID CONTACT ══ -->
     <div class="contact-wrapper">
 
-      <!-- ── STÂNGA: informații + hartă ── -->
+      <!-- ── Stânga: info + hartă ── -->
       <div class="contact-left reveal">
         <h3>Găsiți-ne</h3>
 
@@ -204,7 +242,6 @@
           </div>
         </div>
 
-        <!-- Rețele sociale -->
         <div class="social-row">
           <a href="https://instagram.com" target="_blank" rel="noopener" class="social-btn" title="Instagram">📷</a>
           <a href="https://facebook.com"  target="_blank" rel="noopener" class="social-btn" title="Facebook">👍</a>
@@ -212,7 +249,7 @@
           <a href="https://t.me/sweetdreamscahul" target="_blank" rel="noopener" class="social-btn" title="Telegram">✈️</a>
         </div>
 
-        <!-- ── HARTĂ GOOGLE MAPS — Cahul, str. Ștefan cel Mare ── -->
+        <!-- Hartă Google Maps -->
         <div class="map-container">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2763.4!2d28.1897!3d45.9097!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b6e3b5a5f5f5f5%3A0x0!2zU3RlZmFuIGNlbCBNYXJlIDEzLCBDYWh1bA!5e0!3m2!1sro!2smd!4v1700000000000!5m2!1sro!2smd&q=Stefan+cel+Mare+14,+Cahul,+Moldova"
@@ -225,48 +262,68 @@
         <p class="map-label">📍 str. Ștefan cel Mare 14, Cahul, Moldova</p>
       </div>
 
-      <!-- ── DREAPTA: formular mesaj ── -->
+      <!-- ── Dreapta: formular ── -->
       <div class="contact-form-box reveal">
         <h3>Trimite un mesaj 💌</h3>
 
-        <form id="formContact" onsubmit="submitContact(event)">
+        <!--
+          Același link SheetMonkey ca la torturi!
+          Câmpul hidden "Tip" = "Mesaj contact"
+          îți arată în Excel de unde a venit rândul.
+        -->
+        <form
+          action="https://api.sheetmonkey.io/form/iP1fD4zuZiKx7hQ38NaVTf"
+          method="POST"
+          id="formContact"
+          onsubmit="submitContact(event)"
+        >
+          <!-- Câmp hidden care identifică sursa în Excel -->
+          <input type="hidden" name="Tip" value="Mesaj contact" />
 
           <div class="form-group">
-            <label for="numeContact">Numele tău</label>
-            <input type="text" id="numeContact" placeholder="Cum să te numim?" />
+            <label for="numeContact">Numele tău *</label>
+            <input type="text" id="numeContact" name="Nume complet"
+                   placeholder="Cum să te numim?" required />
           </div>
 
           <div class="form-group">
-            <label for="telefonContact">Telefon / Email</label>
-            <input type="text" id="telefonContact" placeholder="+373 sau adresa de email" />
+            <label for="telefonContact">Telefon / Email *</label>
+            <input type="text" id="telefonContact" name="Telefon"
+                   placeholder="+373 sau adresa de email" required />
           </div>
 
           <div class="form-group">
             <label for="subiect">Subiect</label>
-            <select id="subiect">
-              <option value="comanda">Comandă tort personalizat</option>
-              <option value="meniu">Întrebare despre meniu</option>
-              <option value="livrare">Detalii livrare</option>
-              <option value="colaborare">Colaborare / Evenimente</option>
-              <option value="altul">Alt subiect</option>
+            <select id="subiect" name="Subiect">
+              <option value="Comanda tort personalizat">Comandă tort personalizat</option>
+              <option value="Intrebare despre meniu">Întrebare despre meniu</option>
+              <option value="Detalii livrare">Detalii livrare</option>
+              <option value="Colaborare / Evenimente">Colaborare / Evenimente</option>
+              <option value="Alt subiect">Alt subiect</option>
             </select>
           </div>
 
           <div class="form-group">
             <label for="mesaj">Mesajul tău</label>
-            <textarea id="mesaj" placeholder="Scrieți-ne orice dorință sau întrebare..." style="min-height: 130px;"></textarea>
+            <textarea id="mesaj" name="Detalii suplimentare"
+                      placeholder="Scrieți-ne orice dorință sau întrebare..."></textarea>
           </div>
 
-          <button type="submit" class="btn-primary form-submit">Trimite Mesajul 💌</button>
+          <button type="submit" class="btn-primary form-submit" id="submitBtnContact">
+            Trimite Mesajul 💌
+          </button>
 
           <div class="success-msg" id="mesajContact">
             ✅ Mesajul a fost trimis! Vă răspundem în curând. Mulțumim că ne-ați contactat!
+          </div>
+          <div class="error-msg" id="errorContact">
+            ⚠️ A apărut o eroare. Vă rugăm încercați din nou sau contactați-ne telefonic.
           </div>
 
         </form>
       </div>
 
-    </div><!-- /contact-wrapper -->
+    </div>
   </main>
 
   <footer>
@@ -286,11 +343,38 @@
   <script>
     function submitContact(e) {
       e.preventDefault();
-      const msg = document.getElementById('mesajContact');
-      msg.classList.add('show');
-      msg.style.display = 'block';
-      e.target.reset();
-      msg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+      var form      = e.target;
+      var btn       = document.getElementById('submitBtnContact');
+      var successEl = document.getElementById('mesajContact');
+      var errorEl   = document.getElementById('errorContact');
+
+      successEl.classList.remove('show');
+      errorEl.classList.remove('show');
+
+      btn.disabled = true;
+      btn.textContent = 'Se trimite...';
+
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form)
+      })
+      .then(function(r) {
+        if (r.ok) {
+          successEl.classList.add('show');
+          form.reset();
+          successEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+          errorEl.classList.add('show');
+        }
+      })
+      .catch(function() {
+        errorEl.classList.add('show');
+      })
+      .finally(function() {
+        btn.disabled = false;
+        btn.textContent = 'Trimite Mesajul 💌';
+      });
     }
   </script>
 
