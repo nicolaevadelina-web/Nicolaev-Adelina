@@ -11,22 +11,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:wght@300;400;500&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
 
   <style>
-    /* Fallback pentru variabilele CSS, în caz că style.css extern
-       nu se încarcă corect pe dispozitivul utilizatorului */
-    :root {
-      --cream:      #FDF6EE;
-      --blush:      #F2C4CE;
-      --rose:       #D4758A;
-      --deep-rose:  #9B3A52;
-      --chocolate:  #3D1A1A;
-      --gold:       #C9A84C;
-      --light-gold: #F5E6C8;
-      --white:      #FFFFFF;
-      --text-dark:  #2A1215;
-      --text-mid:   #6B3A45;
-      --shadow:     rgba(61,26,26,0.12);
-    }
-
     .page-hero {
       padding: 140px 5% 60px;
       text-align: center;
@@ -136,7 +120,6 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 1.25rem;
-      margin-bottom: 0;
     }
     .form-group {
       display: flex;
@@ -172,68 +155,111 @@
     }
     .form-group textarea { resize: vertical; min-height: 100px; }
 
-    .flavor-hint { font-size: 0.8rem; color: var(--text-mid); margin-bottom: 0.75rem; font-style: italic; }
+    /* ════════════════════════════════════
+       FLAVOR CHIPS — stiluri îmbunătățite
+       ════════════════════════════════════ */
+    .flavor-label-text {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--deep-rose);
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+    .flavor-hint {
+      font-size: 0.8rem;
+      color: var(--text-mid);
+      margin-bottom: 0.9rem;
+      font-style: italic;
+    }
     .flavor-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
       gap: 0.75rem;
       margin-bottom: 1.5rem;
     }
+
+    /* Ascundem complet checkbox-ul nativ */
+    .flavor-chip input[type="checkbox"] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+      pointer-events: none;
+    }
+
+    /* Stilul vizual al chip-ului */
     .flavor-chip {
+      display: block;
       padding: 12px 10px;
       border-radius: 12px;
-      border: 1.5px solid var(--blush);
+      border: 2px solid var(--blush);
       background: var(--cream);
       text-align: center;
       cursor: pointer;
-      transition: all 0.25s;
+      transition: all 0.22s ease;
       font-size: 0.85rem;
       color: var(--text-mid);
       font-family: 'Lato', sans-serif;
       user-select: none;
       position: relative;
-      display: block;
     }
+
+    /* Hover — culoare mai închisă, ușor ridicat */
     .flavor-chip:hover {
       border-color: var(--rose);
-      background: #FDE8F0;
-      transform: translateY(-2px);
-    }
-    .flavor-chip .fc-emoji { font-size: 1.6rem; display: block; margin-bottom: 5px; }
-
-    /* Ascundem complet checkbox-ul nativ, pe toate browserele/sistemele */
-    .flavor-chip input[type="checkbox"] {
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      appearance: none;
-      position: absolute !important;
-      opacity: 0 !important;
-      width: 1px !important;
-      height: 1px !important;
-      margin: 0 !important;
-      padding: 0 !important;
-      border: 0 !important;
-      outline: none !important;
-      pointer-events: none;
+      background: #F9D8E0;
+      color: var(--deep-rose);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(155,58,82,0.15);
     }
 
-    /* Stilul vizual pentru chip-ul selectat — independent de checkbox */
+    /* SELECTAT — culoare mult mai închisă + checkmark */
     .flavor-chip.selected {
-      border-color: var(--deep-rose) !important;
-      background: var(--blush) !important;
-      color: var(--deep-rose) !important;
-      font-weight: 700 !important;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(155,58,82,0.2) !important;
+      border-color: var(--deep-rose);
+      background: linear-gradient(135deg, #D4758A, #9B3A52);
+      color: var(--white) !important;
+      font-weight: 700;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(155,58,82,0.38);
     }
 
+    /* Checkmark mic în colțul de sus-dreapta */
+    .flavor-chip.selected::after {
+      content: '✓';
+      position: absolute;
+      top: 5px;
+      right: 8px;
+      font-size: 0.7rem;
+      font-weight: 900;
+      color: rgba(255,255,255,0.9);
+    }
+
+    .flavor-chip .fc-emoji {
+      font-size: 1.7rem;
+      display: block;
+      margin-bottom: 5px;
+      transition: transform 0.22s ease;
+    }
+    .flavor-chip:hover .fc-emoji,
+    .flavor-chip.selected .fc-emoji {
+      transform: scale(1.15);
+    }
+
+    /* ── Butoane formular ── */
     .form-submit {
       width: 100%; padding: 15px; font-size: 1rem;
       border: none; cursor: pointer;
       font-family: 'Lato', sans-serif; margin-top: 0.25rem;
     }
-    .form-submit[disabled] { opacity: 0.6; cursor: not-allowed; }
+    .form-submit:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none !important;
+    }
 
+    /* ── Mesaje feedback ── */
     .success-msg {
       display: none;
       background: #EAF8F0;
@@ -258,6 +284,7 @@
     }
     .error-msg.show { display: block; }
 
+    /* ── Responsive ── */
     @media (max-width: 640px) {
       .form-row { grid-template-columns: 1fr; }
       .order-form-container { padding: 1.75rem 1.25rem; }
@@ -294,7 +321,7 @@
       <p class="section-subtitle">Descrieți-ne visul vostru și îl transformăm în realitate dulce</p>
     </section>
 
-    <!-- ══ BANNER COMANDĂ ══ -->
+    <!-- ══ BANNER ══ -->
     <div class="order-hero">
       <h2>🎂 Torturi la Comandă</h2>
       <p>Fiecare tort este creat exclusiv pentru voi, cu minimum 5 zile înainte de eveniment</p>
@@ -337,16 +364,27 @@
         <h3>Formularul de Comandă</h3>
         <p class="form-subtitle">Completați câmpurile de mai jos și vă vom contacta în maxim 24 ore</p>
 
-        <form action="https://api.sheetmonkey.io/form/iP1fD4zuZiKx7hQ38NaVTf" method="post" id="torteForm" onsubmit="submitOrder(event)">
+        <!--
+          IMPORTANT: action= trebuie să fie URL-ul tău SheetMonkey.
+          Înlocuiește cu cel din contul tău dacă e diferit.
+        -->
+        <form
+          action="https://api.sheetmonkey.io/form/iP1fD4zuZiKx7hQ38NaVTf"
+          method="POST"
+          id="torteForm"
+          onsubmit="submitOrder(event)"
+        >
 
           <div class="form-row">
             <div class="form-group">
               <label for="nume">Nume complet *</label>
-              <input type="text" id="nume" name="Nume complet" placeholder="ex: Maria Ionescu" required />
+              <input type="text" id="nume" name="Nume complet"
+                     placeholder="ex: Maria Ionescu" required />
             </div>
             <div class="form-group">
               <label for="telefon">Telefon *</label>
-              <input type="tel" id="telefon" name="Telefon" placeholder=" XX XXX XXX" required />
+              <input type="tel" id="telefon" name="Telefon"
+                     placeholder="+373 XX XXX XXX" required />
             </div>
           </div>
 
@@ -381,62 +419,80 @@
             </select>
           </div>
 
-          <!-- FLAVOR CHIPS -->
-          <div class="form-group">
-            <label>Alege aroma / blaturi *</label>
-            <p class="flavor-hint">Poți alege mai multe</p>
+          <!-- ════════════════════════════════
+               FLAVOR CHIPS
+               Fiecare chip e un <label> care
+               controlează un <input type="checkbox">.
+               La submit, JS colectează valorile
+               bifate și le pune într-un câmp hidden.
+               ════════════════════════════════ -->
+          <div class="form-group" style="margin-bottom: 0.5rem;">
+            <span class="flavor-label-text">Alege aroma / blaturi *</span>
+            <p class="flavor-hint">Poți alege mai multe — apasă pe aromă</p>
           </div>
+
           <div class="flavor-grid" id="flavorGrid">
-            <label class="flavor-chip" onclick="this.classList.toggle('selected')">
-              <input type="checkbox" name="Arome" value="Ciocolata">
+            <label class="flavor-chip" id="chip-ciocolata">
+              <input type="checkbox" name="arome_cb" value="Ciocolată">
               <span class="fc-emoji">🍫</span>Ciocolată
             </label>
-            <label class="flavor-chip" onclick="this.classList.toggle('selected')">
-              <input type="checkbox" name="Arome" value="Capsuni">
+            <label class="flavor-chip" id="chip-capsuni">
+              <input type="checkbox" name="arome_cb" value="Căpșuni">
               <span class="fc-emoji">🍓</span>Căpșuni
             </label>
-            <label class="flavor-chip" onclick="this.classList.toggle('selected')">
-              <input type="checkbox" name="Arome" value="Lamaie">
+            <label class="flavor-chip" id="chip-lamaie">
+              <input type="checkbox" name="arome_cb" value="Lămâie">
               <span class="fc-emoji">🍋</span>Lămâie
             </label>
-            <label class="flavor-chip" onclick="this.classList.toggle('selected')">
-              <input type="checkbox" name="Arome" value="Cafea">
+            <label class="flavor-chip" id="chip-cafea">
+              <input type="checkbox" name="arome_cb" value="Cafea">
               <span class="fc-emoji">☕</span>Cafea
             </label>
-            <label class="flavor-chip" onclick="this.classList.toggle('selected')">
-              <input type="checkbox" name="Arome" value="Afine">
+            <label class="flavor-chip" id="chip-afine">
+              <input type="checkbox" name="arome_cb" value="Afine">
               <span class="fc-emoji">🫐</span>Afine
             </label>
-            <label class="flavor-chip" onclick="this.classList.toggle('selected')">
-              <input type="checkbox" name="Arome" value="Piersici">
+            <label class="flavor-chip" id="chip-piersici">
+              <input type="checkbox" name="arome_cb" value="Piersici">
               <span class="fc-emoji">🍑</span>Piersici
             </label>
-            <label class="flavor-chip" onclick="this.classList.toggle('selected')">
-              <input type="checkbox" name="Arome" value="Vanilie">
+            <label class="flavor-chip" id="chip-vanilie">
+              <input type="checkbox" name="arome_cb" value="Vanilie">
               <span class="fc-emoji">🌸</span>Vanilie
             </label>
-            <label class="flavor-chip" onclick="this.classList.toggle('selected')">
-              <input type="checkbox" name="Arome" value="Nougat">
+            <label class="flavor-chip" id="chip-nougat">
+              <input type="checkbox" name="arome_cb" value="Nougat">
               <span class="fc-emoji">🥜</span>Nougat
             </label>
           </div>
 
+          <!--
+            Câmp hidden: preia aromele selectate ca text
+            și le trimite sub numele "Arome" în SheetMonkey
+          -->
+          <input type="hidden" id="aromeHidden" name="Arome" value="" />
+
           <div class="form-group">
             <label for="tema">Culori și tema dorită</label>
-            <input type="text" id="tema" name="Tema si culori" placeholder="ex: roz și auriu, temă cu flori, personaj unicorn..." />
+            <input type="text" id="tema" name="Tema si culori"
+                   placeholder="ex: roz și auriu, temă cu flori, personaj unicorn..." />
           </div>
 
           <div class="form-group">
             <label for="inscriptie">Inscripție pe tort</label>
-            <input type="text" id="inscriptie" name="Inscriptie" placeholder='ex: "La mulți ani, Elena! 🌸"' />
+            <input type="text" id="inscriptie" name="Inscriptie"
+                   placeholder='ex: "La mulți ani, Elena! 🌸"' />
           </div>
 
           <div class="form-group">
             <label for="detalii">Detalii suplimentare</label>
-            <textarea id="detalii" name="Detalii suplimentare" placeholder="Orice alte dorințe, alergii alimentare sau cerințe speciale..."></textarea>
+            <textarea id="detalii" name="Detalii suplimentare"
+                      placeholder="Orice alte dorințe, alergii alimentare sau cerințe speciale..."></textarea>
           </div>
 
-          <button type="submit" class="btn-primary form-submit" id="submitBtn">✨ Trimite Comanda</button>
+          <button type="submit" class="btn-primary form-submit" id="submitBtn">
+            ✨ Trimite Comanda
+          </button>
 
           <div class="success-msg" id="successMsg">
             🎉 Comanda a fost trimisă cu succes! Vă vom contacta în maxim 24 ore la numărul indicat. Mulțumim!
@@ -444,6 +500,7 @@
           <div class="error-msg" id="errorMsg">
             ⚠️ A apărut o eroare la trimitere. Vă rugăm încercați din nou sau contactați-ne telefonic.
           </div>
+
         </form>
       </div>
     </section>
@@ -466,43 +523,93 @@
 
   <script src="../js/script.js"></script>
   <script>
-    /* ── Trimitere formular către SheetMonkey (apare în Excel) ── */
+    /* ════════════════════════════════════════════════
+       FLAVOR CHIPS — logică vizuală + colectare date
+       ════════════════════════════════════════════════ */
+
+    /* La click pe chip: toggle clasa .selected + bifează/debifează checkbox */
+    document.querySelectorAll('.flavor-chip').forEach(function(chip) {
+      var checkbox = chip.querySelector('input[type="checkbox"]');
+
+      chip.addEventListener('click', function(e) {
+        /* Lăsăm comportamentul nativ al label-ului să bifeze/debifeze checkbox-ul,
+           apoi sincronizăm clasa .selected cu starea checkbox-ului */
+        /* Folosim setTimeout(0) ca să citim starea DUPĂ ce browser-ul a actualizat-o */
+        setTimeout(function() {
+          if (checkbox.checked) {
+            chip.classList.add('selected');
+          } else {
+            chip.classList.remove('selected');
+          }
+        }, 0);
+      });
+    });
+
+    /* ════════════════════════════════════════════════
+       TRIMITERE FORMULAR → SheetMonkey
+       ════════════════════════════════════════════════ */
     function submitOrder(e) {
       e.preventDefault();
 
-      const form = e.target;
-      const btn = document.getElementById('submitBtn');
-      const successMsg = document.getElementById('successMsg');
-      const errorMsg = document.getElementById('errorMsg');
+      var form      = e.target;
+      var btn       = document.getElementById('submitBtn');
+      var successEl = document.getElementById('successMsg');
+      var errorEl   = document.getElementById('errorMsg');
 
-      successMsg.classList.remove('show');
-      errorMsg.classList.remove('show');
+      /* Ascunde mesajele anterioare */
+      successEl.classList.remove('show');
+      errorEl.classList.remove('show');
+
+      /* Colectăm aromele selectate și le punem în câmpul hidden */
+      var aromeSelectate = [];
+      document.querySelectorAll('input[name="arome_cb"]:checked').forEach(function(cb) {
+        aromeSelectate.push(cb.value);
+      });
+
+      /* Dacă nu s-a ales nicio aromă, avertizăm utilizatorul */
+      if (aromeSelectate.length === 0) {
+        alert('Te rugăm să selectezi cel puțin o aromă! 🍫');
+        document.getElementById('flavorGrid').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+
+      /* Punem aromele ca text în câmpul hidden (ex: "Ciocolată, Vanilie") */
+      document.getElementById('aromeHidden').value = aromeSelectate.join(', ');
+
+      /* Dezactivăm butonul pe durata trimiterii */
       btn.disabled = true;
       btn.textContent = 'Se trimite...';
 
-      const formData = new FormData(form);
+      /* Construim FormData din formular */
+      var formData = new FormData(form);
+
+      /* Ștergem câmpurile arome_cb (checkbox-urile individuale) —
+         SheetMonkey primește doar câmpul "Arome" cu valoarea text */
+      formData.delete('arome_cb');
 
       fetch(form.action, {
         method: 'POST',
-        body: formData,
-        headers: { 'Accept': 'application/json' }
+        body: formData
       })
-      .then(response => {
+      .then(function(response) {
         if (response.ok) {
-          successMsg.classList.add('show');
+          successEl.classList.add('show');
           form.reset();
-          document.querySelectorAll('.flavor-chip').forEach(c => c.classList.remove('selected'));
-          successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          /* Resetăm și stilurile chip-urilor */
+          document.querySelectorAll('.flavor-chip').forEach(function(c) {
+            c.classList.remove('selected');
+          });
+          successEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
         } else {
-          errorMsg.classList.add('show');
-          errorMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          errorEl.classList.add('show');
+          errorEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
       })
-      .catch(() => {
-        errorMsg.classList.add('show');
-        errorMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      .catch(function() {
+        errorEl.classList.add('show');
+        errorEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
       })
-      .finally(() => {
+      .finally(function() {
         btn.disabled = false;
         btn.textContent = '✨ Trimite Comanda';
       });
