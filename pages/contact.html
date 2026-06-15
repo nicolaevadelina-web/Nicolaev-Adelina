@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Contactați cofetăria Sweet Dreams Cahul — adresă, program, telefon, formular de mesaj." />
+  <title>Sweet Dreams Cahul — Contact</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:wght@300;400;500&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── Stiluri suplimentare Contact ── */
+
+    .contact-wrapper {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3rem 5% 5rem;
+      display: grid;
+      grid-template-columns: 1fr 1.45fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    /* ── Coloana stânga: info + hartă ── */
+    .contact-left h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.9rem;
+      color: var(--chocolate);
+      margin-bottom: 1.75rem;
+    }
+
+    .info-block {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      margin-bottom: 1.4rem;
+    }
+
+    .info-icon {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      background: var(--blush);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.15rem;
+      flex-shrink: 0;
+      transition: background 0.25s;
+    }
+    .info-block:hover .info-icon { background: var(--rose); }
+
+    .info-block h4 {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 0.2rem;
+    }
+    .info-block p {
+      font-size: 0.95rem;
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+    .info-block a {
+      color: var(--deep-rose);
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .info-block a:hover { opacity: 0.7; }
+
+    /* Rețele sociale */
+    .social-row {
+      display: flex;
+      gap: 0.75rem;
+      margin: 1.5rem 0 2rem;
+    }
+    .social-btn {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      border: 1.5px solid var(--blush);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      text-decoration: none;
+      transition: all 0.25s;
+    }
+    .social-btn:hover {
+      background: var(--deep-rose);
+      border-color: var(--deep-rose);
+      transform: translateY(-3px);
+    }
+
+    /* Harta Google Maps */
+    .map-container {
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px var(--shadow);
+      border: 1px solid var(--light-gold);
+      height: 280px;
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    .map-label {
+      font-size: 0.78rem;
+      color: var(--text-mid);
+      letter-spacing: 0.08em;
+      margin-top: 0.6rem;
+      text-align: center;
+    }
+
+    /* ── Coloana dreapta: formular ── */
+    .contact-form-box {
+      background: var(--white);
+      border-radius: 24px;
+      padding: 2.5rem;
+      box-shadow: 0 6px 40px var(--shadow);
+    }
+
+    .contact-form-box h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.55rem;
+      color: var(--chocolate);
+      margin-bottom: 1.5rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 860px) {
+      .contact-wrapper {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== HEADER ==================== -->
+  <header>
+    <nav>
+      <a href="../index.html" class="nav-logo">Sweet <span>Dreams</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html">Acasă</a></li>
+        <li><a href="meniu.html">Meniu</a></li>
+        <li><a href="torturi.html">Torturi la Comandă</a></li>
+        <li><a href="galerie.html">Galerie</a></li>
+        <li><a href="contact.html" class="btn-nav activ">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ANTET -->
+    <section class="page-hero">
+      <span class="section-tag">Suntem aproape</span>
+      <h1 class="section-title">Hai să vorbim <em>dulce</em></h1>
+    </section>
+
+    <!-- GRID CONTACT -->
+    <div class="contact-wrapper">
+
+      <!-- ── STÂNGA: informații + hartă ── -->
+      <div class="contact-left reveal">
+        <h3>Găsiți-ne</h3>
+
+        <div class="info-block">
+          <div class="info-icon">📍</div>
+          <div>
+            <h4>Adresă</h4>
+            <p>str. Ștefan cel Mare 14<br />Cahul, MD-3901, Moldova</p>
+          </div>
+        </div>
+
+        <div class="info-block">
+          <div class="info-icon">⏰</div>
+          <div>
+            <h4>Program</h4>
+            <p>Luni–Vineri: 09:00–19:00<br />Sâmbătă: 09:00–18:00<br />Duminică: 10:00–15:00</p>
+          </div>
+        </div>
+
+        <div class="info-block">
+          <div class="info-icon">📞</div>
+          <div>
+            <h4>Telefon</h4>
+            <p>
+              <a href="tel:+37322900000">+373 299 XX XXX</a><br />
+              <a href="tel:+37379000000">+373 79 XXX XXX</a>
+            </p>
+          </div>
+        </div>
+
+        <div class="info-block">
+          <div class="info-icon">✉️</div>
+          <div>
+            <h4>Email</h4>
+            <p><a href="mailto:comenzi@sweetdreamscahul.md">comenzi@sweetdreamscahul.md</a></p>
+          </div>
+        </div>
+
+        <!-- Rețele sociale -->
+        <div class="social-row">
+          <a href="https://instagram.com" target="_blank" rel="noopener" class="social-btn" title="Instagram">📷</a>
+          <a href="https://facebook.com"  target="_blank" rel="noopener" class="social-btn" title="Facebook">👍</a>
+          <a href="https://wa.me/373799000000" target="_blank" rel="noopener" class="social-btn" title="WhatsApp">💬</a>
+          <a href="https://t.me/sweetdreamscahul" target="_blank" rel="noopener" class="social-btn" title="Telegram">✈️</a>
+        </div>
+
+        <!-- ── HARTĂ GOOGLE MAPS — Cahul, str. Ștefan cel Mare ── -->
+        <div class="map-container">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2763.4!2d28.1897!3d45.9097!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b6e3b5a5f5f5f5%3A0x0!2zU3RlZmFuIGNlbCBNYXJlIDEzLCBDYWh1bA!5e0!3m2!1sro!2smd!4v1700000000000!5m2!1sro!2smd&q=Stefan+cel+Mare+14,+Cahul,+Moldova"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Locația Sweet Dreams Cahul">
+          </iframe>
+        </div>
+        <p class="map-label">📍 str. Ștefan cel Mare 14, Cahul, Moldova</p>
+      </div>
+
+      <!-- ── DREAPTA: formular mesaj ── -->
+      <div class="contact-form-box reveal">
+        <h3>Trimite un mesaj 💌</h3>
+
+        <form id="formContact" onsubmit="submitContact(event)">
+
+          <div class="form-group">
+            <label for="numeContact">Numele tău</label>
+            <input type="text" id="numeContact" placeholder="Cum să te numim?" />
+          </div>
+
+          <div class="form-group">
+            <label for="telefonContact">Telefon / Email</label>
+            <input type="text" id="telefonContact" placeholder="+373 sau adresa de email" />
+          </div>
+
+          <div class="form-group">
+            <label for="subiect">Subiect</label>
+            <select id="subiect">
+              <option value="comanda">Comandă tort personalizat</option>
+              <option value="meniu">Întrebare despre meniu</option>
+              <option value="livrare">Detalii livrare</option>
+              <option value="colaborare">Colaborare / Evenimente</option>
+              <option value="altul">Alt subiect</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="mesaj">Mesajul tău</label>
+            <textarea id="mesaj" placeholder="Scrieți-ne orice dorință sau întrebare..." style="min-height: 130px;"></textarea>
+          </div>
+
+          <button type="submit" class="btn-primary form-submit">Trimite Mesajul 💌</button>
+
+          <div class="success-msg" id="mesajContact">
+            ✅ Mesajul a fost trimis! Vă răspundem în curând. Mulțumim că ne-ați contactat!
+          </div>
+
+        </form>
+      </div>
+
+    </div><!-- /contact-wrapper -->
+  </main>
+
+  <footer>
+    <div class="footer-logo">Sweet <span>Dreams</span></div>
+    <ul class="footer-links">
+      <li><a href="../index.html">Acasă</a></li>
+      <li><a href="meniu.html">Meniu</a></li>
+      <li><a href="torturi.html">Torturi</a></li>
+      <li><a href="galerie.html">Galerie</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <hr class="footer-divider" />
+    <p class="footer-copy">© 2026 Sweet Dreams Cahul · str. Ștefan cel Mare 14, Cahul, Moldova</p>
+  </footer>
+
+  <script src="../js/script.js"></script>
+  <script>
+    function submitContact(e) {
+      e.preventDefault();
+      const msg = document.getElementById('mesajContact');
+      msg.classList.add('show');
+      msg.style.display = 'block';
+      e.target.reset();
+      msg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  </script>
+
+</body>
+</html>

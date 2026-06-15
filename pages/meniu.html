@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Meniul cofetăriei Sweet Dreams Cahul — torturi, éclere, tarte, macarons." />
+  <title>Sweet Dreams Cahul — Meniu</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:wght@300;400;500&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── Imagini în carduri de meniu ── */
+    .menu-card-img {
+      overflow: hidden;
+      position: relative;
+    }
+    .menu-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.45s ease;
+    }
+    .menu-card:hover .menu-card-img img {
+      transform: scale(1.07);
+    }
+    .menu-card-img .img-fallback {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+      position: absolute;
+      top: 0; left: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== HEADER ==================== -->
+  <header>
+    <nav>
+      <a href="../index.html" class="nav-logo">Sweet <span>Dreams</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html">Acasă</a></li>
+        <li><a href="meniu.html" class="activ">Meniu</a></li>
+        <li><a href="torturi.html">Torturi la Comandă</a></li>
+        <li><a href="galerie.html">Galerie</a></li>
+        <li><a href="contact.html" class="btn-nav">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ANTET -->
+    <section class="page-hero">
+      <span class="section-tag">Delicii pentru fiecare gust</span>
+      <h1 class="section-title">Meniul nostru <em>artizanal</em></h1>
+      <p class="section-subtitle">Preparate cu iubire în fiecare zi, din ingrediente premium</p>
+    </section>
+
+    <!-- FILTRE CATEGORII -->
+    <div class="menu-categories">
+      <button class="cat-btn active" onclick="filterMenu('all', this)">✦ Toate</button>
+      <button class="cat-btn" onclick="filterMenu('torturi', this)">🎂 Torturi</button>
+      <button class="cat-btn" onclick="filterMenu('eclere', this)">🍮 Éclere &amp; Profiterole</button>
+      <button class="cat-btn" onclick="filterMenu('tarte', this)">🥧 Tarte &amp; Cheesecake</button>
+      <button class="cat-btn" onclick="filterMenu('macarons', this)">🍬 Macarons</button>
+    </div>
+
+    <!-- GRID PRODUSE -->
+    <section class="menu-page">
+      <div class="menu-grid" id="menuGrid">
+
+        <!-- ════════════════════════
+             TORTURI
+             Pune pozele în: images/meniu/
+             ════════════════════════ -->
+
+        <div class="menu-card" data-cat="torturi">
+          <div class="menu-card-img mc-blush">
+            <!-- Poză: images/meniu/tort-red-velvet.jpg -->
+            <img src="../images/poza1.png" alt="Tort Red Velvet"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <div class="img-fallback" style="display:none;">🎂</div>
+            <span class="menu-card-badge">⭐ #1</span>
+          </div>
+          <div class="menu-card-body">
+            <h3>Tort Red Velvet</h3>
+            <p>Straturi de pandișpan catifea roșie, cremă delicată de mascarpone cu vanilie</p>
+            <div class="menu-card-footer">
+              <div class="price"><sup>de la </sup>350 <sup>lei</sup></div>
+              <a href="torturi.html" class="add-btn">Comandă</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-card" data-cat="torturi">
+          <div class="menu-card-img mc-cream">
+            <!-- Poză: images/meniu/tort-napoleon.jpg -->
+            <img src="../images/poza2.png" alt="Tort Napoleon"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <div class="img-fallback" style="display:none;">🍰</div>
+          </div>
+          <div class="menu-card-body">
+            <h3>Tort Napoleon</h3>
+            <p>Foi crocante de foietaj cu cremă de unt și lapte condensat, rețetă clasică</p>
+            <div class="menu-card-footer">
+              <div class="price"><sup>de la </sup>300 <sup>lei</sup></div>
+              <a href="torturi.html" class="add-btn">Comandă</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-card" data-cat="torturi">
+          <div class="menu-card-img mc-brown">
+            <!-- Poză: images/meniu/tort-truffle-noir.jpg -->
+            <img src="../images/poza3.png" alt="Tort Truffle Noir"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <div class="img-fallback" style="display:none;">🎂</div>
+            <span class="menu-card-badge">🍫 Cioco</span>
+          </div>
+          <div class="menu-card-body">
+            <h3>Tort Truffle Noir</h3>
+            <p>Ciocolată neagră 72%, ganache intens, decor din trufe de ciocolată belgiană</p>
+            <div class="menu-card-footer">
+              <div class="price"><sup>de la </sup>420 <sup>lei</sup></div>
+              <a href="torturi.html" class="add-btn">Comandă</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-card" data-cat="torturi">
+          <div class="menu-card-img mc-pink">
+            <!-- Poză: images/meniu/tort-floral-roz.jpg -->
+            <img src="../images/poza4.png" alt="Tort Floral Roz"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <div class="img-fallback" style="display:none;">💐</div>
+          </div>
+          <div class="menu-card-body">
+            <h3>Tort Floral Roz</h3>
+            <p>Pandișpan cu rose water, frișcă naturală, decor floral din zahăr</p>
+            <div class="menu-card-footer">
+              <div class="price"><sup>de la </sup>380 <sup>lei</sup></div>
+              <a href="torturi.html" class="add-btn">Comandă</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ════════════════════════
+             ÉCLERE & PROFITEROLE
+             ════════════════════════ -->
+
+        <div class="menu-card" data-cat="eclere">
+          <div class="menu-card-img mc-cream">
+            <!-- Poză: images/meniu/eclair-vanilie.jpg -->
+            <img src="../images/poza6.webp" alt="Éclair Vanilie Bourbon"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <div class="img-fallback" style="display:none;">🍮</div>
+            <span class="menu-card-badge">🆕 Nou</span>
+          </div>
+          <div class="menu-card-body">
+            <h3>Éclair Vanilie Bourbon</h3>
+            <p>Aluat choux pufos, cremă patissière de vanilie Bourbon, glazură oglindă</p>
+            <div class="menu-card-footer">
+              <div class="price">35 <sup>lei/buc</sup></div>
+              <button class="add-btn">Adaugă</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-card" data-cat="eclere">
+          <div class="menu-card-img mc-brown">
+            <!-- Poză: images/meniu/eclair-ciocolata.jpg -->
+            <img src="../images/poza7.webp" alt="Éclair Ciocolată"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <div class="img-fallback" style="display:none;">🍫</div>
+          </div>
+          <div class="menu-card-body">
+            <h3>Éclair Ciocolată</h3>
+            <p>Cremă de ciocolată Valrhona, glazură de cacao cu granule de aur</p>
+            <div class="menu-card-footer">
+              <div class="price">38 <sup>lei/buc</sup></div>
+              <button class="add-btn">Adaugă</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-card" data-cat="eclere">
+          <div class="menu-card-img mc-blush">
+            <!-- Poză: images/meniu/profiterol-afine.jpg -->
+            <img src="../images/poza8.png" alt="Profiterol Afine"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <div class="img-fallback" style="display:none;">🫐</div>
+          </div>
+          <div class="menu-card-body">
+            <h3>Profiterol Afine</h3>
+            <p>Minichoux umplute cu mousse de afine proaspete și frișcă naturală</p>
+            <div class="menu-card-footer">
+              <div class="price">32 <sup>lei/buc</sup></div>
+              <button class="add-btn">Adaugă</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ════════════════════════
+             TARTE & CHEESECAKE
+             ════════════════════════ -->
+
+        <div class="menu-card" data-cat="tarte">
+          <div class="menu-card-img mc-cream">
+            <!-- Poză: images/meniu/tarta-lemon-curd.jpg -->
+            <img src="../images/poza9.png" alt="Tartă Lemon Curd"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <div class="img-fallback" style="display:none;">🍋</div>
+          </div>
+          <div class="menu-card-body">
+            <h3>Tartă Lemon Curd</h3>
+            <p>Aluat sablé, curd de lămâie proaspătă, bezea italiană gratinată</p>
+            <div class="menu-card-footer">
+              <div class="price">110 <sup>lei</sup></div>
+              <button class="add-btn">Adaugă</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-card" data-cat="tarte">
+          <div class="menu-card-img mc-brown">
+            <!-- Poză: images/meniu/cheesecake-new-york.jpg -->
+            <img src="../images/poza10.png" alt="Cheesecake New York"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <div class="img-fallback" style="display:none;">🍫</div>
+          </div>
+          <div class="menu-card-body">
+            <h3>Cheesecake New York</h3>
+            <p>Cremă de brânză Philadelphia, biscuiți Digestive, topping de fructe de pădure</p>
+            <div class="menu-card-footer">
+              <div class="price">130 <sup>lei</sup></div>
+              <button class="add-btn">Adaugă</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-card" data-cat="tarte">
+          <div class="menu-card-img mc-blush">
+            <!-- Poză: images/meniu/tarta-fragi.jpg -->
+            <img src="../images/poza11.png" alt="Tartă Fragi Proaspeți"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <div class="img-fallback" style="display:none;">🍓</div>
+          </div>
+          <div class="menu-card-body">
+            <h3>Tartă Fragi Proaspeți</h3>
+            <p>Cremă de vanilie, fragi de sezon, jeleu transparent pentru luciu</p>
+            <div class="menu-card-footer">
+              <div class="price">95 <sup>lei</sup></div>
+              <button class="add-btn">Adaugă</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ════════════════════════
+             MACARONS
+             ════════════════════════ -->
+
+        <div class="menu-card" data-cat="macarons">
+          <div class="menu-card-img mc-pink">
+            <!-- Poză: images/meniu/macarons-clasic.jpg -->
+            <img src="../images/poza12.png" alt="Set Macarons Clasic"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <div class="img-fallback" style="display:none;">🍬</div>
+            <span class="menu-card-badge">6 buc</span>
+          </div>
+          <div class="menu-card-body">
+            <h3>Set Macarons Clasic</h3>
+            <p>Vanilie, ciocolată, zmeură, lavandă, pistachio, caramel — 6 arome diferite</p>
+            <div class="menu-card-footer">
+              <div class="price">120 <sup>lei/set</sup></div>
+              <button class="add-btn">Adaugă</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-card" data-cat="macarons">
+          <div class="menu-card-img mc-cream">
+            <!-- Poză: images/meniu/macarons-rose-lychee.jpg -->
+            <img src="../images/poza13.png" alt="Macarons Rose & Lychee"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <div class="img-fallback" style="display:none;">🌸</div>
+          </div>
+          <div class="menu-card-body">
+            <h3>Macarons Rose &amp; Lychee</h3>
+            <p>Gust delicat de trandafir și lichee, glazură roz pal, decor floricele</p>
+            <div class="menu-card-footer">
+              <div class="price">22 <sup>lei/buc</sup></div>
+              <button class="add-btn">Adaugă</button>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /menuGrid -->
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-logo">Sweet <span>Dreams</span></div>
+    <ul class="footer-links">
+      <li><a href="../index.html">Acasă</a></li>
+      <li><a href="meniu.html">Meniu</a></li>
+      <li><a href="torturi.html">Torturi</a></li>
+      <li><a href="galerie.html">Galerie</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <hr class="footer-divider" />
+    <p class="footer-copy">© 2026 Sweet Dreams Cahul · str. Ștefan cel Mare 14, Cahul, Moldova</p>
+  </footer>
+
+  <script src="../js/script.js"></script>
+  <script>
+    function filterMenu(cat, btn) {
+      document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.menu-card').forEach(card => {
+        if (cat === 'all' || card.dataset.cat === cat) {
+          card.style.display = '';
+          card.style.animation = 'none';
+          void card.offsetWidth;
+          card.style.animation = 'fadeUp 0.4s ease both';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
