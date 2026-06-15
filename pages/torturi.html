@@ -11,6 +11,22 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:wght@300;400;500&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
 
   <style>
+    /* Fallback pentru variabilele CSS, în caz că style.css extern
+       nu se încarcă corect pe dispozitivul utilizatorului */
+    :root {
+      --cream:      #FDF6EE;
+      --blush:      #F2C4CE;
+      --rose:       #D4758A;
+      --deep-rose:  #9B3A52;
+      --chocolate:  #3D1A1A;
+      --gold:       #C9A84C;
+      --light-gold: #F5E6C8;
+      --white:      #FFFFFF;
+      --text-dark:  #2A1215;
+      --text-mid:   #6B3A45;
+      --shadow:     rgba(61,26,26,0.12);
+    }
+
     .page-hero {
       padding: 140px 5% 60px;
       text-align: center;
@@ -183,20 +199,32 @@
       background: #FDE8F0;
       transform: translateY(-2px);
     }
-    .flavor-chip.selected {
-      border-color: var(--deep-rose);
-      background: var(--blush);
-      color: var(--deep-rose);
-      font-weight: 700;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(155,58,82,0.2);
-    }
     .flavor-chip .fc-emoji { font-size: 1.6rem; display: block; margin-bottom: 5px; }
+
+    /* Ascundem complet checkbox-ul nativ, pe toate browserele/sistemele */
     .flavor-chip input[type="checkbox"] {
-      position: absolute;
-      opacity: 0;
-      width: 0; height: 0;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      position: absolute !important;
+      opacity: 0 !important;
+      width: 1px !important;
+      height: 1px !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      border: 0 !important;
+      outline: none !important;
       pointer-events: none;
+    }
+
+    /* Stilul vizual pentru chip-ul selectat — independent de checkbox */
+    .flavor-chip.selected {
+      border-color: var(--deep-rose) !important;
+      background: var(--blush) !important;
+      color: var(--deep-rose) !important;
+      font-weight: 700 !important;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(155,58,82,0.2) !important;
     }
 
     .form-submit {
