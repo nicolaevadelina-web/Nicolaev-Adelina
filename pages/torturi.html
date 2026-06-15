@@ -11,6 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:wght@300;400;500&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
 
   <style>
+    /* ── Page hero ── */
     .page-hero {
       padding: 140px 5% 60px;
       text-align: center;
@@ -29,6 +30,7 @@
       pointer-events: none;
     }
 
+    /* ── Banner comandă ── */
     .order-hero {
       background: linear-gradient(135deg, var(--chocolate), var(--deep-rose));
       border-radius: 24px;
@@ -60,6 +62,7 @@
       margin: 0 auto 2rem;
     }
 
+    /* ── Pași ── */
     .torturi-steps { padding: 3rem 5% 1rem; }
     .process-steps {
       display: grid;
@@ -98,6 +101,7 @@
     }
     .step-card p { font-size: 0.875rem; color: var(--text-mid); line-height: 1.6; }
 
+    /* ── Formular ── */
     .torturi-form-section { padding: 1rem 5% 5rem; }
 
     .order-form-container {
@@ -155,18 +159,7 @@
     }
     .form-group textarea { resize: vertical; min-height: 100px; }
 
-    /* ════════════════════════════════════
-       FLAVOR CHIPS — stiluri îmbunătățite
-       ════════════════════════════════════ */
-    .flavor-label-text {
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--deep-rose);
-      display: block;
-      margin-bottom: 0.3rem;
-    }
+    /* ── Flavor chips ── */
     .flavor-hint {
       font-size: 0.8rem;
       color: var(--text-mid);
@@ -179,19 +172,7 @@
       gap: 0.75rem;
       margin-bottom: 1.5rem;
     }
-
-    /* Ascundem complet checkbox-ul nativ */
-    .flavor-chip input[type="checkbox"] {
-      position: absolute;
-      opacity: 0;
-      width: 0;
-      height: 0;
-      pointer-events: none;
-    }
-
-    /* Stilul vizual al chip-ului */
     .flavor-chip {
-      display: block;
       padding: 12px 10px;
       border-radius: 12px;
       border: 2px solid var(--blush);
@@ -205,37 +186,30 @@
       user-select: none;
       position: relative;
     }
-
-    /* Hover — culoare mai închisă, ușor ridicat */
     .flavor-chip:hover {
       border-color: var(--rose);
-      background: #F9D8E0;
+      background: #F5C8D4;
       color: var(--deep-rose);
       transform: translateY(-3px);
-      box-shadow: 0 6px 16px rgba(155,58,82,0.15);
+      box-shadow: 0 6px 16px rgba(155,58,82,0.18);
     }
-
-    /* SELECTAT — culoare mult mai închisă + checkmark */
+    /* SELECTAT — fundal întunecat, text alb */
     .flavor-chip.selected {
       border-color: var(--deep-rose);
-      background: linear-gradient(135deg, #D4758A, #9B3A52);
-      color: var(--white) !important;
+      background: linear-gradient(135deg, #C45570, #8B2A42);
+      color: #ffffff;
       font-weight: 700;
       transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(155,58,82,0.38);
+      box-shadow: 0 6px 20px rgba(155,58,82,0.45);
     }
-
-    /* Checkmark mic în colțul de sus-dreapta */
     .flavor-chip.selected::after {
       content: '✓';
       position: absolute;
-      top: 5px;
-      right: 8px;
+      top: 5px; right: 8px;
       font-size: 0.7rem;
       font-weight: 900;
-      color: rgba(255,255,255,0.9);
+      color: rgba(255,255,255,0.95);
     }
-
     .flavor-chip .fc-emoji {
       font-size: 1.7rem;
       display: block;
@@ -244,10 +218,10 @@
     }
     .flavor-chip:hover .fc-emoji,
     .flavor-chip.selected .fc-emoji {
-      transform: scale(1.15);
+      transform: scale(1.18);
     }
 
-    /* ── Butoane formular ── */
+    /* ── Buton submit ── */
     .form-submit {
       width: 100%; padding: 15px; font-size: 1rem;
       border: none; cursor: pointer;
@@ -257,6 +231,7 @@
       opacity: 0.6;
       cursor: not-allowed;
       transform: none !important;
+      box-shadow: none !important;
     }
 
     /* ── Mesaje feedback ── */
@@ -364,10 +339,6 @@
         <h3>Formularul de Comandă</h3>
         <p class="form-subtitle">Completați câmpurile de mai jos și vă vom contacta în maxim 24 ore</p>
 
-        <!--
-          IMPORTANT: action= trebuie să fie URL-ul tău SheetMonkey.
-          Înlocuiește cu cel din contul tău dacă e diferit.
-        -->
         <form
           action="https://api.sheetmonkey.io/form/iP1fD4zuZiKx7hQ38NaVTf"
           method="POST"
@@ -419,57 +390,40 @@
             </select>
           </div>
 
-          <!-- ════════════════════════════════
-               FLAVOR CHIPS
-               Fiecare chip e un <label> care
-               controlează un <input type="checkbox">.
-               La submit, JS colectează valorile
-               bifate și le pune într-un câmp hidden.
-               ════════════════════════════════ -->
-          <div class="form-group" style="margin-bottom: 0.5rem;">
-            <span class="flavor-label-text">Alege aroma / blaturi *</span>
-            <p class="flavor-hint">Poți alege mai multe — apasă pe aromă</p>
+          <!-- ── FLAVOR CHIPS ── -->
+          <div class="form-group" style="margin-bottom: 0.4rem;">
+            <label>Alege aroma / blaturi *</label>
+            <p class="flavor-hint">Apasă pe aromă pentru a o selecta — poți alege mai multe</p>
           </div>
 
           <div class="flavor-grid" id="flavorGrid">
-            <label class="flavor-chip" id="chip-ciocolata">
-              <input type="checkbox" name="arome_cb" value="Ciocolată">
+            <div class="flavor-chip" onclick="toggleFlavor(this)" data-flavor="Ciocolată">
               <span class="fc-emoji">🍫</span>Ciocolată
-            </label>
-            <label class="flavor-chip" id="chip-capsuni">
-              <input type="checkbox" name="arome_cb" value="Căpșuni">
+            </div>
+            <div class="flavor-chip" onclick="toggleFlavor(this)" data-flavor="Căpșuni">
               <span class="fc-emoji">🍓</span>Căpșuni
-            </label>
-            <label class="flavor-chip" id="chip-lamaie">
-              <input type="checkbox" name="arome_cb" value="Lămâie">
+            </div>
+            <div class="flavor-chip" onclick="toggleFlavor(this)" data-flavor="Lămâie">
               <span class="fc-emoji">🍋</span>Lămâie
-            </label>
-            <label class="flavor-chip" id="chip-cafea">
-              <input type="checkbox" name="arome_cb" value="Cafea">
+            </div>
+            <div class="flavor-chip" onclick="toggleFlavor(this)" data-flavor="Cafea">
               <span class="fc-emoji">☕</span>Cafea
-            </label>
-            <label class="flavor-chip" id="chip-afine">
-              <input type="checkbox" name="arome_cb" value="Afine">
+            </div>
+            <div class="flavor-chip" onclick="toggleFlavor(this)" data-flavor="Afine">
               <span class="fc-emoji">🫐</span>Afine
-            </label>
-            <label class="flavor-chip" id="chip-piersici">
-              <input type="checkbox" name="arome_cb" value="Piersici">
+            </div>
+            <div class="flavor-chip" onclick="toggleFlavor(this)" data-flavor="Piersici">
               <span class="fc-emoji">🍑</span>Piersici
-            </label>
-            <label class="flavor-chip" id="chip-vanilie">
-              <input type="checkbox" name="arome_cb" value="Vanilie">
+            </div>
+            <div class="flavor-chip" onclick="toggleFlavor(this)" data-flavor="Vanilie">
               <span class="fc-emoji">🌸</span>Vanilie
-            </label>
-            <label class="flavor-chip" id="chip-nougat">
-              <input type="checkbox" name="arome_cb" value="Nougat">
+            </div>
+            <div class="flavor-chip" onclick="toggleFlavor(this)" data-flavor="Nougat">
               <span class="fc-emoji">🥜</span>Nougat
-            </label>
+            </div>
           </div>
 
-          <!--
-            Câmp hidden: preia aromele selectate ca text
-            și le trimite sub numele "Arome" în SheetMonkey
-          -->
+          <!-- Camp hidden — trimite aromele la SheetMonkey -->
           <input type="hidden" id="aromeHidden" name="Arome" value="" />
 
           <div class="form-group">
@@ -523,31 +477,12 @@
 
   <script src="../js/script.js"></script>
   <script>
-    /* ════════════════════════════════════════════════
-       FLAVOR CHIPS — logică vizuală + colectare date
-       ════════════════════════════════════════════════ */
+    /* ── Toggle vizual chip ── */
+    function toggleFlavor(el) {
+      el.classList.toggle('selected');
+    }
 
-    /* La click pe chip: toggle clasa .selected + bifează/debifează checkbox */
-    document.querySelectorAll('.flavor-chip').forEach(function(chip) {
-      var checkbox = chip.querySelector('input[type="checkbox"]');
-
-      chip.addEventListener('click', function(e) {
-        /* Lăsăm comportamentul nativ al label-ului să bifeze/debifeze checkbox-ul,
-           apoi sincronizăm clasa .selected cu starea checkbox-ului */
-        /* Folosim setTimeout(0) ca să citim starea DUPĂ ce browser-ul a actualizat-o */
-        setTimeout(function() {
-          if (checkbox.checked) {
-            chip.classList.add('selected');
-          } else {
-            chip.classList.remove('selected');
-          }
-        }, 0);
-      });
-    });
-
-    /* ════════════════════════════════════════════════
-       TRIMITERE FORMULAR → SheetMonkey
-       ════════════════════════════════════════════════ */
+    /* ── Submit → SheetMonkey ── */
     function submitOrder(e) {
       e.preventDefault();
 
@@ -556,49 +491,41 @@
       var successEl = document.getElementById('successMsg');
       var errorEl   = document.getElementById('errorMsg');
 
-      /* Ascunde mesajele anterioare */
       successEl.classList.remove('show');
       errorEl.classList.remove('show');
 
-      /* Colectăm aromele selectate și le punem în câmpul hidden */
-      var aromeSelectate = [];
-      document.querySelectorAll('input[name="arome_cb"]:checked').forEach(function(cb) {
-        aromeSelectate.push(cb.value);
+      /* Colectăm aromele selectate */
+      var arome = [];
+      document.querySelectorAll('#flavorGrid .flavor-chip.selected').forEach(function(chip) {
+        arome.push(chip.getAttribute('data-flavor'));
       });
 
-      /* Dacă nu s-a ales nicio aromă, avertizăm utilizatorul */
-      if (aromeSelectate.length === 0) {
+      /* Validare aromă obligatorie */
+      if (arome.length === 0) {
         alert('Te rugăm să selectezi cel puțin o aromă! 🍫');
         document.getElementById('flavorGrid').scrollIntoView({ behavior: 'smooth', block: 'center' });
         return;
       }
 
-      /* Punem aromele ca text în câmpul hidden (ex: "Ciocolată, Vanilie") */
-      document.getElementById('aromeHidden').value = aromeSelectate.join(', ');
+      /* Punem aromele în câmpul hidden */
+      document.getElementById('aromeHidden').value = arome.join(', ');
 
       /* Dezactivăm butonul pe durata trimiterii */
       btn.disabled = true;
       btn.textContent = 'Se trimite...';
 
-      /* Construim FormData din formular */
-      var formData = new FormData(form);
-
-      /* Ștergem câmpurile arome_cb (checkbox-urile individuale) —
-         SheetMonkey primește doar câmpul "Arome" cu valoarea text */
-      formData.delete('arome_cb');
-
       fetch(form.action, {
         method: 'POST',
-        body: formData
+        body: new FormData(form)
       })
-      .then(function(response) {
-        if (response.ok) {
+      .then(function(r) {
+        if (r.ok) {
           successEl.classList.add('show');
           form.reset();
-          /* Resetăm și stilurile chip-urilor */
-          document.querySelectorAll('.flavor-chip').forEach(function(c) {
+          document.querySelectorAll('#flavorGrid .flavor-chip').forEach(function(c) {
             c.classList.remove('selected');
           });
+          document.getElementById('aromeHidden').value = '';
           successEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
         } else {
           errorEl.classList.add('show');
