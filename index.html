@@ -1,47 +1,26 @@
 <!DOCTYPE html>
 <html lang="ro">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Sweet Dreams Cahul — Cofetărie artizanală. Torturi personalizate, deserturi fine și comenzi speciale." />
   <title>Sweet Dreams Cahul — Acasă</title>
+  <!-- Bootstrap 5.3.8 CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" />
+  <!-- Stiluri proprii — vin DUPĂ Bootstrap și suprascriu tot -->
   <link rel="stylesheet" href="css/style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:wght@300;400;500&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
-
   <style>
-    /* ── Imagini în carduri de produse ── */
-    .product-img {
-      overflow: hidden;
-    }
-    .product-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.45s ease;
-    }
-    .product-card:hover .product-img img {
-      transform: scale(1.07);
-    }
-
-    /* Fallback emoji dacă poza lipsește */
-    .product-img .img-fallback {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 5rem;
-    }
+    .product-img { overflow: hidden; }
+    .product-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.45s ease; }
+    .product-card:hover .product-img img { transform: scale(1.07); }
+    .product-img .img-fallback { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 5rem; }
   </style>
 </head>
-
 <body>
 
-  <!-- ==================== HEADER ==================== -->
   <header>
     <nav>
       <a href="index.html" class="nav-logo">Sweet <span>Dreams</span></a>
@@ -55,10 +34,8 @@
     </nav>
   </header>
 
-  <!-- ==================== MAIN ==================== -->
   <main>
 
-    <!-- ══ HERO ══ -->
     <section class="hero">
       <div class="floating-items">
         <div class="float-item fi1">🌸</div>
@@ -76,23 +53,13 @@
           <a href="pages/torturi.html" class="btn-outline">Comandă Tort</a>
         </div>
         <div class="hero-stats">
-          <div>
-            <span class="stat-num">500+</span>
-            <span class="stat-label">Torturi create</span>
-          </div>
-          <div>
-            <span class="stat-num">8</span>
-            <span class="stat-label">Ani experiență</span>
-          </div>
-          <div>
-            <span class="stat-num">100%</span>
-            <span class="stat-label">Ingrediente naturale</span>
-          </div>
+          <div><span class="stat-num">500+</span><span class="stat-label">Torturi create</span></div>
+          <div><span class="stat-num">8</span><span class="stat-label">Ani experiență</span></div>
+          <div><span class="stat-num">100%</span><span class="stat-label">Ingrediente naturale</span></div>
         </div>
       </div>
     </section>
 
-    <!-- ══ DE CE NE ALEGI ══ -->
     <section class="features">
       <div class="section-header">
         <span class="section-tag">De ce ne alegi</span>
@@ -100,46 +67,22 @@
         <p class="section-subtitle">Fiecare creație este o operă de artă realizată cu pasiune și ingrediente atent selectate</p>
       </div>
       <div class="features-grid">
-        <div class="feature-card reveal">
-          <div class="feature-icon">🌿</div>
-          <h3>100% Natural</h3>
-          <p>Folosim doar ingrediente proaspete, fără coloranți artificiali sau conservanți.</p>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-icon">🎨</div>
-          <h3>Design Unic</h3>
-          <p>Fiecare tort este personalizat după dorința ta — unicat și memorabil.</p>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-icon">🚚</div>
-          <h3>Livrare Cahul</h3>
-          <p>Livrăm cu grijă în tot orașul Cahul — la timp și în condiții perfecte.</p>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-icon">⭐</div>
-          <h3>Calitate Premium</h3>
-          <p>Ciocolată belgiană, frișcă naturală, fructe proaspete de sezon.</p>
-        </div>
+        <div class="feature-card reveal"><div class="feature-icon">🌿</div><h3>100% Natural</h3><p>Folosim doar ingrediente proaspete, fără coloranți artificiali sau conservanți.</p></div>
+        <div class="feature-card reveal"><div class="feature-icon">🎨</div><h3>Design Unic</h3><p>Fiecare tort este personalizat după dorința ta — unicat și memorabil.</p></div>
+        <div class="feature-card reveal"><div class="feature-icon">🚚</div><h3>Livrare Cahul</h3><p>Livrăm cu grijă în tot orașul Cahul — la timp și în condiții perfecte.</p></div>
+        <div class="feature-card reveal"><div class="feature-icon">⭐</div><h3>Calitate Premium</h3><p>Ciocolată belgiană, frișcă naturală, fructe proaspete de sezon.</p></div>
       </div>
     </section>
 
-    <!-- ══ PRODUSE VEDETE ══ -->
     <section class="products">
       <div class="section-header">
         <span class="section-tag">Cele mai iubite</span>
         <h2 class="section-title">Vedetele <em>lunii</em></h2>
       </div>
       <div class="products-grid">
-
-        <!-- ── CARD 1: Tort Red Velvet ── -->
-        <!-- Pune poza ta în: images/meniu/tort-red-velvet.jpg -->
         <article class="product-card reveal">
           <div class="product-img bg-blush">
-            <img
-              src="images/poza1.png"
-              alt="Tort Red Velvet"
-              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-            />
+            <img src="images/poza1.png" alt="Tort Red Velvet" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
             <div class="img-fallback" style="display:none;">🎂</div>
             <span class="product-badge">⭐ Popular</span>
           </div>
@@ -152,16 +95,9 @@
             </div>
           </div>
         </article>
-
-        <!-- ── CARD 2: Éclair cu Vanilie ── -->
-        <!-- Pune poza ta în: images/meniu/eclair-vanilie.jpg -->
         <article class="product-card reveal">
           <div class="product-img bg-cream">
-            <img
-              src="images/poza6.webp"
-              alt="Éclair cu Vanilie"
-              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-            />
+            <img src="images/poza6.webp" alt="Éclair cu Vanilie" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
             <div class="img-fallback" style="display:none;">🍰</div>
             <span class="product-badge">🆕 Nou</span>
           </div>
@@ -174,16 +110,9 @@
             </div>
           </div>
         </article>
-
-        <!-- ── CARD 3: Tartă cu Ciocolată ── -->
-        <!-- Pune poza ta în: images/meniu/tarta-ciocolata.jpg -->
         <article class="product-card reveal">
           <div class="product-img bg-brown">
-            <img
-              src="images/poza3.png"
-              alt="Tartă cu Ciocolată"
-              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-            />
+            <img src="images/poza3.png" alt="Tartă cu Ciocolată" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
             <div class="img-fallback" style="display:none;">🍫</div>
           </div>
           <div class="product-body">
@@ -195,41 +124,26 @@
             </div>
           </div>
         </article>
-
       </div>
       <div class="products-cta">
         <a href="pages/meniu.html" class="btn-primary">Vezi Meniul Complet</a>
       </div>
     </section>
 
-    <!-- ══ TESTIMONIALE ══ -->
     <section class="reviews">
       <div class="section-header">
         <span class="section-tag">Ce spun clienții</span>
         <h2 class="section-title">Povești <em>dulci</em></h2>
       </div>
       <div class="reviews-grid">
-        <div class="review-card reveal">
-          <div class="review-stars">★★★★★</div>
-          <p>"Tortul de nuntă a fost absolut magic! Toți invitații au cerut rețeta. Mulțumim din suflet!"</p>
-          <span class="review-name">— Maria Popescu</span>
-        </div>
-        <div class="review-card reveal">
-          <div class="review-stars">★★★★★</div>
-          <p>"Am comandat pentru aniversarea fiicei mele. Designul unicornului a fost perfect, exact cum am visat!"</p>
-          <span class="review-name">— Elena Rusu</span>
-        </div>
-        <div class="review-card reveal">
-          <div class="review-stars">★★★★★</div>
-          <p>"Éclair-urile sunt din altă lume. Le comand în fiecare vineri pentru weekend! Recomand cu drag."</p>
-          <span class="review-name">— Andrei Moraru</span>
-        </div>
+        <div class="review-card reveal"><div class="review-stars">★★★★★</div><p>"Tortul de nuntă a fost absolut magic! Toți invitații au cerut rețeta. Mulțumim din suflet!"</p><span class="review-name">— Maria Popescu</span></div>
+        <div class="review-card reveal"><div class="review-stars">★★★★★</div><p>"Am comandat pentru aniversarea fiicei mele. Designul unicornului a fost perfect, exact cum am visat!"</p><span class="review-name">— Elena Rusu</span></div>
+        <div class="review-card reveal"><div class="review-stars">★★★★★</div><p>"Éclair-urile sunt din altă lume. Le comand în fiecare vineri pentru weekend! Recomand cu drag."</p><span class="review-name">— Andrei Moraru</span></div>
       </div>
     </section>
 
   </main>
 
-  <!-- ==================== FOOTER ==================== -->
   <footer>
     <div class="footer-logo">Sweet <span>Dreams</span></div>
     <ul class="footer-links">
@@ -243,6 +157,8 @@
     <p class="footer-copy">© 2026 Sweet Dreams Cahul · str. Ștefan cel Mare 14, Cahul, Moldova</p>
   </footer>
 
+  <!-- Bootstrap 5.3.8 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/script.js"></script>
 
 </body>
